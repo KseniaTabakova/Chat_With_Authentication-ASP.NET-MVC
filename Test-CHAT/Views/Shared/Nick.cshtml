@@ -1,0 +1,78 @@
+﻿@model Test_CHAT.Models.ChatModel
+@using Microsoft.Owin.Security
+@{
+    Layout = null; ;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    @Styles.Render("~/Content/Site2.css")
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>@ViewBag.Title Chat </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+   
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+          
+            @if (User.Identity.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Auth", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="navbar-brand">
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Sign out</a></li>
+                    </div>
+                }
+
+            }
+            else
+            {
+                <div class="navbar-brand">
+                    <li>@Html.ActionLink("Login", "Login", "Auth")</li>
+                </div>
+            }
+
+        </div>
+    </div>
+
+    <div id="Username">
+    </div>
+    <div id="LastRefresh">
+    </div>
+    <div class="row">
+        <div class="col-md-0">
+            <div id="container">
+                <div id="loginBlock">
+                    Enter your Nick:
+                    <input type="text" id="txtUserName" />
+                    <button id="btnLogin" value="Войти">Apply</button>
+                </div>
+            </div>
+            <div id="Error">
+            </div>
+        </div>
+
+
+
+    </div>
+    @Ajax.ActionLink("Login", "Nick", new {user = ""},
+        new AjaxOptions {UpdateTargetId = "container", OnFailure = "LoginOnFailure", OnSuccess = "LoginOnSuccess"},
+        new {@id = "LoginButton", @style = "visibility:hidden;"})
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+  
+    @Scripts.Render("~/Scripts/chat.js")
+
+
+</body>
+</html>
+

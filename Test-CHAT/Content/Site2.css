@@ -1,0 +1,113 @@
+﻿body, html {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body, p {
+    font-family: Verdana;
+    font-size: 14px;
+}
+
+#container {
+    height: 60%;
+    width: 85%;
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    min-width: 320px;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+#loginBlock {
+    position: absolute;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    height: 100px;
+    left: 26%;
+    display: inline-block;
+   padding: 35px 15px;
+}
+
+#Error {
+    width: 80%;
+    left: 10%;
+    position: absolute;
+    height: 10%;
+    top: 91%;
+    color: Red;
+    font-weight: bold;
+    text-align: center;
+}
+
+#LastRefresh {
+    display: inline;
+    position: absolute;
+    font-size: x-small;
+    text-align: right;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+}
+
+#Username {
+    display: inline;
+    position: absolute;
+    font-size: medium;
+    font-weight: bold;
+    text-align: left;
+    top: 10%;
+    left: 10%;
+    width: 50%;
+}
+
+#Users {
+    position: absolute;
+    width: 25%;
+    left: 1%;
+    height: 98%;
+    top: 1%;
+    background-color: #d3d3d3;
+    text-align: left;
+}
+
+#Messages {
+    position: absolute;
+    width: 72%;
+    left: 27%;
+    height: 80%;
+    top: 1%;
+    background-color: #f5deb3;
+    text-align: left;
+    font-size: x-small;
+    overflow-y: scroll;
+}
+
+#inputForm {
+    position: absolute;
+    width: 72%;
+    left: 27%;
+    height: 15%;
+    top: 82%;
+    min-height: 60px;
+    background: #f8f8ff;
+    border: 1px solid silver;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.serverMes {
+    color: #dc143c;
+    font-weight: bold;
+}
+
+button {
+    font-weight: bold;
+    width: 100px;
+}
+
+table, textarea {
+    width: 100%;
+}

@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>@ViewBag.Title Chat </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    using (Html.BeginForm("LogOff", "Auth", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="navbar-brand">
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Sign out</a></li>
+                        </div>
+                    }
+
+                }
+                else
+                {
+                    <div class="navbar-brand">
+                        <li>@Html.ActionLink("Login", "Login", "Auth")</li>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+            @if (User.Identity.IsAuthenticated)
+            {
+                <h1>Welcome @User.Identity.Name !</h1>
+            }
+            else
+            {
+                <h1>You are not logged in </h1>
+            }
+       
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
